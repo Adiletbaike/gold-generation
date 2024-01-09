@@ -22,7 +22,7 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="flex bg-[url('education-bg.png')] bg-opacity-10 h-screen bg-center bg-cover">
+    <div className="flex bg-[url('/education-bg.png')] bg-opacity-10 h-screen bg-center bg-cover">
       <div className="h-full w-full mx-auto pt-28">
         <div className="text-xl cursor-pointer flex flex-col justify-center items-center mt-5 md:mt-0">
           <h1 className="font-semibold text-3xl text-gray-700 m-2">Логин</h1>
