@@ -5,43 +5,24 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import Modal from "./Modals/Modal";
 import JoditEditor from "jodit-react";
 
-const jariyas = [
-    {
-        id: 1,
-        image:
-          "https://f3h3w7a5.rocketcdn.me/wp-content/uploads/2020/03/feat_important-.jpg",
-        title: "Jariya 1",
-        shortDescription: "Jariya 1 short description",
-        description: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
-      },
-      {
-        id: 2,
-        image:
-          "https://f3h3w7a5.rocketcdn.me/wp-content/uploads/2020/03/feat_important-.jpg",
-        title: "Jariya 2",
-        shortDescription: "Jariya 2 short description",
-        description: "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available.",
-      },
+const dhikrs = [
+  {
+    id: 1,
+    title: "Dhikr 1",
+    shortDescription: "Dhikr 1 short description",
+    number: 1000,
+  },
+  {
+    id: 2,
+    title: "Dhikr 2",
+    shortDescription: "Dhikr 2 short description",
+    number: 1000,
+  },
 ];
 
-const Jariya = () => {
+const Dhikr = () => {
   // Modal
   const [showModal, setShowModal] = useState(false);
-  // Image
-  const inputRef = useRef(null);
-  const [image, setImage] = useState(null);
-  const handleImageClick = () => {
-    inputRef.current.click();
-  };
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    setImage(file);
-    console.log(file);
-  };
-
-  // Text editor
-  const editor = useRef(null);
-  const [content, setContent] = useState("");
 
   return (
     <div className="bg-neutral-200 rounded-lg p-4">
@@ -58,48 +39,21 @@ const Jariya = () => {
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
           <div className="py-6 px-6 lg:px-8 text-left ">
             <h3 className="mb-4 text-xl font-medium text-gray-900">
-              Ищ-чара кошуу
+              Зикр кошуу
             </h3>
             <form className="space-y-3" action="#">
-              <div
-                className="flex flex-col justify-center"
-                onClick={handleImageClick}
-              >
-                {image ? (
-                  <img
-                    src={URL.createObjectURL(image)}
-                    alt=""
-                    className="w-20 mb-2 rounded-full"
-                  />
-                ) : (
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-                    alt=""
-                    className="w-20 mb-2"
-                  />
-                )}
-                <input
-                  type="file"
-                  // className="w-full"
-                  ref={inputRef}
-                  onChange={handleImageChange}
-                  value={image ? URL.createObjectURL(image) : ""}
-                  // style={{display: none}}
-                  // defaultValue={edit ? editData.image : null}
-                />
-              </div>
               <div>
                 <label
                   htmlFor="title"
                   className="block mb-2 text-sm font-medium text-gray-900"
                 >
-                  Жарыя
+                  Зикр
                 </label>
                 <input
                   type="text"
-                  name="jariyaName"
-                  id="jariyaName"
-                  placeholder="Жарыя"
+                  name="dhikrName"
+                  id="dhikrName"
+                  placeholder="Зикр"
                   required
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 />
@@ -120,23 +74,22 @@ const Jariya = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 />
               </div>
-
               <div>
                 <label
-                  htmlFor="textEditor"
+                  htmlFor="number"
                   className="block mb-2 text-sm font-medium text-gray-900"
                 >
-                    Текст
+                  Саны
                 </label>
-                <JoditEditor
-                  ref={editor}
-                  value={content}
-                  //   tabIndex={1} // tabIndex of textarea
-                  //   onBlur={(newContent) => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
-                  onChange={(newContent) => setContent(newContent)}
+                <input
+                  type="number"
+                  name="Number"
+                  id="Number"
+                  placeholder="Саны"
+                  required
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 />
               </div>
-
               <div className="flex justify-end">
                 <button
                   type="submit"
@@ -166,13 +119,7 @@ const Jariya = () => {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Сурот
-                    </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Макаланын аты
+                      Зикр
                     </th>
                     <th
                       scope="col"
@@ -184,7 +131,7 @@ const Jariya = () => {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
-                      Текст
+                      Саны
                     </th>
 
                     <th scope="col" className="relative px-6 py-3">
@@ -193,25 +140,13 @@ const Jariya = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {jariyas.map((jariya, index) => (
+                  {dhikrs.map((dhikr, index) => (
                     <tr key={index} className="hover:bg-gray-200 duration-300">
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
-                          <div className="flex-shrink-0 h-10 w-20">
-                            <img
-                              width="96"
-                              height="48"
-                              src={jariya.image}
-                              alt="man-wearing-turban"
-                            />
-                          </div>
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
                           <div>
                             <div className="text-sm font-medium text-gray-900">
-                              {jariya.id}
+                              {dhikr.id}
                             </div>
                           </div>
                         </div>
@@ -220,7 +155,7 @@ const Jariya = () => {
                         <div className="flex items-center">
                           <div>
                             <div className="text-sm font-medium text-gray-900">
-                              {jariya.title}
+                              {dhikr.title}
                             </div>
                           </div>
                         </div>
@@ -229,16 +164,16 @@ const Jariya = () => {
                         <div className="flex items-center">
                           <div>
                             <div className="text-sm font-medium text-gray-900">
-                              {jariya.shortDescription}
+                              {dhikr.shortDescription}
                             </div>
                           </div>
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-wrap">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <div>
                             <div className="text-sm font-medium text-gray-900">
-                              {jariya.description}
+                              {dhikr.number}
                             </div>
                           </div>
                         </div>
@@ -274,4 +209,4 @@ const Jariya = () => {
   );
 };
 
-export default Jariya;
+export default Dhikr;

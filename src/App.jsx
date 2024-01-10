@@ -10,6 +10,9 @@ import Articles from './components/Articles';
 import Events from './components/Events';
 import Announcement from './components/Announcement';
 import Jariya from './components/Jariya';
+import Tasks from './components/Tasks';
+import Dhikr from './components/Dhikr';
+import CommonVideo from './components/CommonVideo';
 
 const App = () => {
   return (
@@ -22,6 +25,9 @@ const App = () => {
           <Route path='/events' element={<Events/>}/> 
           <Route path='/announcement' element={<Announcement/>}/> 
           <Route path='/jariya' element={<Jariya/>}/>
+          <Route path='/tasks' element={<Tasks/>}/>
+          <Route path='/dhikr' element={<Dhikr/>}/>
+          <Route path='/horizon' element={<CommonVideo/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
       </Routes>
